@@ -50,14 +50,14 @@ func (be *Backend) login(username, password string) (*client.Client, error) {
 			return nil, err
 		}
 	} else {
-		log.Printf("KKKKSSOOO")
+		log.Printf("KKKKSSOOO: %s", be.Security)
 		if c, err = client.Dial(be.Addr); err != nil {
 			log.Printf("VAO DAY")
 			return nil, err
 		}
 		log.Printf("%s", be.Addr)
 		if be.Security == SecuritySTARTTLS {
-			log.Prinft("HAY VAO DAY")
+			log.Printf("HAY VAO DAY")
 			if err := c.StartTLS(be.TLSConfig); err != nil {
 				return nil, err
 			}

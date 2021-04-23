@@ -52,10 +52,12 @@ func (be *Backend) login(username, password string) (*client.Client, error) {
 	} else {
 		log.Printf("KKKKSSOOO")
 		if c, err = client.Dial(be.Addr); err != nil {
+			log.Printf("VAO DAY")
 			return nil, err
 		}
 
 		if be.Security == SecuritySTARTTLS {
+			log.Prinft("HAY VAO DAY")
 			if err := c.StartTLS(be.TLSConfig); err != nil {
 				return nil, err
 			}

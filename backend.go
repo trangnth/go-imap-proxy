@@ -40,6 +40,7 @@ func NewTLS(addr string, tlsConfig *tls.Config) *Backend {
 }
 
 func (be *Backend) login(username, password string) (*client.Client, error) {
+	Printf("KKKKSSOOO2222222")
 	var c *client.Client
 	var err error
 	if be.Security == SecurityTLS {

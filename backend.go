@@ -58,9 +58,9 @@ func (be *Backend) login(username, password string) (*client.Client, error) {
 		log.Printf("%s", be.Addr)
 		if be.Security == SecuritySTARTTLS {
 			log.Printf("HAY VAO DAY")
-			#if err := c.StartTLS(be.TLSConfig); err != nil {
-			#	return nil, err
-			#}
+			//if err := c.StartTLS(be.TLSConfig); err != nil {
+			//	return nil, err
+			//}
 		}
 	}
 

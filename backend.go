@@ -17,8 +17,8 @@ const (
 )
 
 type Backend struct {
-	Addr string
-	Security Security
+	Addr      string
+	Security  Security
 	TLSConfig *tls.Config
 
 	unexported struct{}
@@ -26,15 +26,15 @@ type Backend struct {
 
 func New(addr string) *Backend {
 	return &Backend{
-		Addr: addr,
+		Addr:     addr,
 		Security: SecuritySTARTTLS,
 	}
 }
 
 func NewTLS(addr string, tlsConfig *tls.Config) *Backend {
 	return &Backend{
-		Addr: addr,
-		Security: SecurityTLS,
+		Addr:      addr,
+		Security:  SecurityTLS,
 		TLSConfig: tlsConfig,
 	}
 }
@@ -47,6 +47,7 @@ func (be *Backend) login(username, password string) (*client.Client, error) {
 			return nil, err
 		}
 	} else {
+		Printf("KKKKSSOOO")
 		if c, err = client.Dial(be.Addr); err != nil {
 			return nil, err
 		}
@@ -65,15 +66,15 @@ func (be *Backend) login(username, password string) (*client.Client, error) {
 	return c, nil
 }
 
-func (be *Backend) Login(_ *imap.ConnInfo,username, password string) (backend.User, error) {
+func (be *Backend) Login(_ *imap.ConnInfo, username, password string) (backend.User, error) {
 	c, err := be.login(username, password)
 	if err != nil {
 		return nil, err
 	}
 
 	u := &user{
-		be: be,
-		c: c,
+		be:       be,
+		c:        c,
 		username: username,
 	}
 	return u, nil

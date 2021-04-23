@@ -40,7 +40,7 @@ func NewTLS(addr string, tlsConfig *tls.Config) *Backend {
 	}
 }
 
-func (be *Backend) login(username, password string) (*client.Client, error) {
+func (be *Backend) Klogin(username, password string) (*client.Client, error) {
 	log.Printf("KKKKSSOOO2222222")
 	var c *client.Client
 	var err error
@@ -70,7 +70,7 @@ func (be *Backend) login(username, password string) (*client.Client, error) {
 
 func (be *Backend) Login(_ *imap.ConnInfo, username, password string) (backend.User, error) {
 	log.Printf("KKKKSSOOO1111111111")
-	c, err := be.login(username, password)
+	c, err := be.Klogin(username, password)
 	if err != nil {
 		return nil, err
 	}

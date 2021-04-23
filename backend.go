@@ -2,6 +2,7 @@ package proxy
 
 import (
 	"crypto/tls"
+	"log"
 
 	"github.com/emersion/go-imap"
 	"github.com/emersion/go-imap/backend"
@@ -40,7 +41,7 @@ func NewTLS(addr string, tlsConfig *tls.Config) *Backend {
 }
 
 func (be *Backend) login(username, password string) (*client.Client, error) {
-	Printf("KKKKSSOOO2222222")
+	log.Printf("KKKKSSOOO2222222")
 	var c *client.Client
 	var err error
 	if be.Security == SecurityTLS {
@@ -48,7 +49,7 @@ func (be *Backend) login(username, password string) (*client.Client, error) {
 			return nil, err
 		}
 	} else {
-		Printf("KKKKSSOOO")
+		log.Printf("KKKKSSOOO")
 		if c, err = client.Dial(be.Addr); err != nil {
 			return nil, err
 		}
@@ -68,7 +69,7 @@ func (be *Backend) login(username, password string) (*client.Client, error) {
 }
 
 func (be *Backend) Login(_ *imap.ConnInfo, username, password string) (backend.User, error) {
-	Printf("KKKKSSOOO1111111111")
+	log.Printf("KKKKSSOOO1111111111")
 	c, err := be.login(username, password)
 	if err != nil {
 		return nil, err

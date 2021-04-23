@@ -26,6 +26,7 @@ type Backend struct {
 }
 
 func New(addr string) *Backend {
+	log.Printf("NEWWWWW")
 	return &Backend{
 		Addr:     addr,
 		Security: SecuritySTARTTLS,
